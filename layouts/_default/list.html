@@ -9,7 +9,14 @@
     </div>
 
     {{ $pattern := printf "galleries/%s/*.jpeg" $galleryAssets }}
-    {{ $images := sort (resources.Match $pattern) "Name" }}
+    {{/* Sort by EXIF capture date, falling back to filename when EXIF is missing */}}
+    {{ $sortable := slice }}
+    {{ range resources.Match $pattern }}
+      {{ $date := "" }}
+      {{ with .Exif }}{{ with .Date }}{{ $date = . }}{{ end }}{{ end }}
+      {{ $sortable = $sortable | append (dict "img" . "date" $date "name" .Name) }}
+    {{ end }}
+    {{ $images := apply (sort (sort $sortable "name") "date") "index" "." "img" }}
     {{ $count := len $images }}
 
     {{ if eq $count 0 }}
