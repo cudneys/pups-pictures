@@ -1,0 +1,55 @@
+baseURL = "https://dogs.this-old.dad"
+locale = "en-us"
+title = "My Dogs"
+
+[params]
+  description = "Pictures of the dogs I've had over the years"
+
+# Mount gallery directories into Hugo's asset pipeline for image processing
+[[module.mounts]]
+  source = "assets"
+  target = "assets"
+
+[[module.mounts]]
+  source = "static"
+  target = "static"
+
+[[module.mounts]]
+  source = "layouts"
+  target = "layouts"
+
+[[module.mounts]]
+  source = "content"
+  target = "content"
+
+[[module.mounts]]
+  source = "data"
+  target = "data"
+
+[[module.mounts]]
+  source = "i18n"
+  target = "i18n"
+
+[[module.mounts]]
+  source = "archetypes"
+  target = "archetypes"
+
+[[module.mounts]]
+  source = "galleries/Indi"
+  target = "assets/galleries/indi"
+
+[[module.mounts]]
+  source = "galleries/Izzy"
+  target = "assets/galleries/izzy"
+
+[[module.mounts]]
+  source = "galleries/Rey"
+  target = "assets/galleries/rey"
+
+[[module.mounts]]
+  source = "galleries/Snoopy And Puggy"
+  target = "assets/galleries/snoopy-and-puggy"
+
+[[module.mounts]]
+  source = "galleries/Winston"
+  target = "assets/galleries/winston"

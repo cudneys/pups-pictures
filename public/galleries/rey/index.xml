@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ms. Rey Skybarker on My Dogs</title>
+    <link>http://localhost:1313/galleries/rey/</link>
+    <description>Recent content in Ms. Rey Skybarker on My Dogs</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/galleries/rey/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

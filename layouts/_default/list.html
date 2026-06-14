@@ -1,0 +1,67 @@
+{{ define "main" }}
+{{ $galleryAssets := .Params.gallery_assets }}
+{{ if $galleryAssets }}
+  {{/* This is a photo gallery page */}}
+  <div class="gallery-page">
+    <div class="gallery-page__header">
+      <a href="{{ "/" | relURL }}" class="back-link">← All Galleries</a>
+      <h1 class="page-title">{{ .Title }}</h1>
+    </div>
+
+    {{ $pattern := printf "galleries/%s/*.jpeg" $galleryAssets }}
+    {{ $images := sort (resources.Match $pattern) "Name" }}
+    {{ $count := len $images }}
+
+    {{ if eq $count 0 }}
+      <p class="no-photos">No photos found.</p>
+    {{ else }}
+      <p class="photo-count">{{ $count }} photos</p>
+      <div class="pswp-gallery" id="gallery-{{ $galleryAssets }}">
+        {{ range $images }}
+          {{ $thumb := .Resize "400x webp q83" }}
+          <a href="{{ .RelPermalink }}"
+             data-pswp-width="{{ .Width }}"
+             data-pswp-height="{{ .Height }}"
+             target="_blank">
+            <img src="{{ $thumb.RelPermalink }}"
+                 alt="{{ .Name }}"
+                 loading="lazy"
+                 width="{{ $thumb.Width }}"
+                 height="{{ $thumb.Height }}">
+          </a>
+        {{ end }}
+      </div>
+
+      <script type="module">
+        import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.js';
+        const lightbox = new PhotoSwipeLightbox({
+          gallery: '#gallery-{{ $galleryAssets }}',
+          children: 'a',
+          pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.js')
+        });
+        lightbox.init();
+      </script>
+    {{ end }}
+  </div>
+
+{{ else }}
+  {{/* Generic list page (e.g. /galleries/) */}}
+  <div class="home">
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="gallery-grid">
+      {{ range .Sections }}
+        {{ $galleryAssets := .Params.gallery_assets }}
+        {{ $images := resources.Match (printf "galleries/%s/*.jpeg" $galleryAssets) }}
+        {{ $count := len $images }}
+        <a class="gallery-card" href="{{ .Permalink }}">
+          {{ partial "gallery-cover" . }}
+          <div class="gallery-card__info">
+            <h2 class="gallery-card__title">{{ .Title }}</h2>
+            <p class="gallery-card__count">{{ $count }} photos</p>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+{{ end }}
+{{ end }}

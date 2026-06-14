@@ -1,0 +1,21 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<div class="home">
+  <h1 class="page-title">{{ .Site.Title }}</h1>
+  <div class="gallery-grid">
+    {{ $galleriesSection := .Site.GetPage "/galleries" }}
+    {{ range $galleriesSection.Sections }}
+      {{ $galleryAssets := .Params.gallery_assets }}
+      {{ $images := resources.Match (printf "galleries/%s/*.jpeg" $galleryAssets) }}
+      {{ $count := len $images }}
+      <a class="gallery-card" href="{{ .Permalink }}">
+        {{ partial "gallery-cover" . }}
+        <div class="gallery-card__info">
+          <h2 class="gallery-card__title">{{ .Title }}</h2>
+          <p class="gallery-card__count">{{ $count }} photos</p>
+        </div>
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ end }}

@@ -1,0 +1,18 @@
+{{/*
+  Renders a gallery card cover image.
+  Context: a gallery section page (.Params.gallery_assets, .Params.cover)
+  Uses .Params.cover filename if set, otherwise falls back to the first image.
+*/}}
+{{ $galleryAssets := .Params.gallery_assets }}
+{{ $images := sort (resources.Match (printf "galleries/%s/*.jpeg" $galleryAssets)) "Name" }}
+{{ if gt (len $images) 0 }}
+  {{ $cover := index $images 0 }}
+  {{ if .Params.cover }}
+    {{ $named := resources.Get (printf "galleries/%s/%s" $galleryAssets .Params.cover) }}
+    {{ if $named }}{{ $cover = $named }}{{ end }}
+  {{ end }}
+  {{ $thumb := $cover.Resize "800x webp q82" }}
+  <div class="gallery-card__image" style="background-image: url('{{ $thumb.RelPermalink }}')"></div>
+{{ else }}
+  <div class="gallery-card__image gallery-card__image--empty"></div>
+{{ end }}
