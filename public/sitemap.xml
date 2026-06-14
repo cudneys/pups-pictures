@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://dogs.this-old.dad/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/</loc>
+    <loc>https://dogs.this-old.dad/galleries/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/indi/</loc>
+    <loc>https://dogs.this-old.dad/galleries/indi/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/izzy/</loc>
+    <loc>https://dogs.this-old.dad/galleries/izzy/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/rey/</loc>
+    <loc>https://dogs.this-old.dad/galleries/rey/</loc>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://dogs.this-old.dad/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/winston/</loc>
+    <loc>https://dogs.this-old.dad/galleries/winston/</loc>
   </url><url>
-    <loc>http://localhost:1313/galleries/snoopy-and-puggy/</loc>
+    <loc>https://dogs.this-old.dad/galleries/snoopy-and-puggy/</loc>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://dogs.this-old.dad/tags/</loc>
   </url>
 </urlset>

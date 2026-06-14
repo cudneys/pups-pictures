@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sir Winston Furchill on My Dogs</title>
-    <link>http://localhost:1313/galleries/winston/</link>
+    <link>https://dogs.this-old.dad/galleries/winston/</link>
     <description>Recent content in Sir Winston Furchill on My Dogs</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/galleries/winston/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dogs.this-old.dad/galleries/winston/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
