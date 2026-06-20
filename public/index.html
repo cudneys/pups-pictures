@@ -69,8 +69,7 @@
       <span>5 galleries &middot; 243 photos</span>
     </div>
     <h1 class="hero-title">
-      The dogs<br>
-      <em>we love.</em>
+      The bestest dogs<br>
     </h1>
     <p class="hero-sub">Pictures of the dogs I&#39;ve had over the years</p>
     <div class="hero-actions">
@@ -87,7 +86,7 @@
     <div class="gallery-grid">
       
         
-        <a class="gallery-card" href="https://dogs.this-old.dad/galleries/indi/">
+        <a class="gallery-card" href="/galleries/indi/">
           <div class="gallery-card__image">
             
 
@@ -107,7 +106,7 @@
         </a>
       
         
-        <a class="gallery-card" href="https://dogs.this-old.dad/galleries/izzy/">
+        <a class="gallery-card" href="/galleries/izzy/">
           <div class="gallery-card__image">
             
 
@@ -127,7 +126,7 @@
         </a>
       
         
-        <a class="gallery-card" href="https://dogs.this-old.dad/galleries/rey/">
+        <a class="gallery-card" href="/galleries/rey/">
           <div class="gallery-card__image">
             
 
@@ -150,7 +149,7 @@
         </a>
       
         
-        <a class="gallery-card" href="https://dogs.this-old.dad/galleries/winston/">
+        <a class="gallery-card" href="/galleries/winston/">
           <div class="gallery-card__image">
             
 
@@ -173,7 +172,7 @@
         </a>
       
         
-        <a class="gallery-card" href="https://dogs.this-old.dad/galleries/snoopy-and-puggy/">
+        <a class="gallery-card" href="/galleries/snoopy-and-puggy/">
           <div class="gallery-card__image">
             
 
@@ -231,10 +230,38 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 this-old.dad</p>
+      <p>&copy; 2026 <span data-sld>this-old.dad</span></p>
     </div>
   </div>
 </footer>
+
+  
+<script>
+(function () {
+  var FAMILY = ['cudneys.net', 'this-old.dad'];
+  function sldOf(host) {
+    host = host.replace(/^www\./, '');
+    for (var i = 0; i < FAMILY.length; i++) {
+      if (host === FAMILY[i] || host.endsWith('.' + FAMILY[i])) return FAMILY[i];
+    }
+    return null;
+  }
+  var current = sldOf(location.hostname);
+  if (!current) return;
+  var links = document.querySelectorAll('a[href]');
+  for (var j = 0; j < links.length; j++) {
+    var url;
+    try { url = new URL(links[j].href, location.href); } catch (e) { continue; }
+    var matched = sldOf(url.hostname);
+    if (!matched || matched === current) continue;
+    var h = url.hostname.replace(/^www\./, '');
+    url.hostname = h.slice(0, h.length - matched.length) + current;
+    links[j].setAttribute('href', url.toString());
+  }
+  var marks = document.querySelectorAll('[data-sld]');
+  for (var k = 0; k < marks.length; k++) marks[k].textContent = current;
+})();
+</script>
 
 </body>
 </html>

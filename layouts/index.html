@@ -34,7 +34,7 @@
     <div class="gallery-grid">
       {{ range $galleries }}
         {{ $count := len (resources.Match (printf "galleries/%s/*.jpeg" .Params.gallery_assets)) }}
-        <a class="gallery-card" href="{{ .Permalink }}">
+        <a class="gallery-card" href="{{ .RelPermalink }}">
           <div class="gallery-card__image">
             {{ partial "gallery-cover" . }}
           </div>

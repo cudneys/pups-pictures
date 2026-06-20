@@ -1,0 +1,32 @@
+{{/*
+  Keeps every cross-site reference on whichever second-level domain the page
+  was requested with. The family is served under both this-old.dad and
+  cudneys.net; internal links are already relative, so this only rewrites
+  absolute links to sibling sites and updates text marked with [data-sld].
+*/}}
+<script>
+(function () {
+  var FAMILY = ['cudneys.net', 'this-old.dad'];
+  function sldOf(host) {
+    host = host.replace(/^www\./, '');
+    for (var i = 0; i < FAMILY.length; i++) {
+      if (host === FAMILY[i] || host.endsWith('.' + FAMILY[i])) return FAMILY[i];
+    }
+    return null;
+  }
+  var current = sldOf(location.hostname);
+  if (!current) return;
+  var links = document.querySelectorAll('a[href]');
+  for (var j = 0; j < links.length; j++) {
+    var url;
+    try { url = new URL(links[j].href, location.href); } catch (e) { continue; }
+    var matched = sldOf(url.hostname);
+    if (!matched || matched === current) continue;
+    var h = url.hostname.replace(/^www\./, '');
+    url.hostname = h.slice(0, h.length - matched.length) + current;
+    links[j].setAttribute('href', url.toString());
+  }
+  var marks = document.querySelectorAll('[data-sld]');
+  for (var k = 0; k < marks.length; k++) marks[k].textContent = current;
+})();
+</script>
