@@ -12,7 +12,14 @@
     {{ if $named }}{{ $cover = $named }}{{ end }}
   {{ end }}
   {{ $thumb := $cover.Resize "800x webp q82" }}
-  <div class="gallery-card__image" style="background-image: url('{{ $thumb.RelPermalink }}')"></div>
+  <img src="{{ $thumb.RelPermalink }}" alt="{{ .Title }}" loading="lazy">
 {{ else }}
-  <div class="gallery-card__image gallery-card__image--empty"></div>
+  <div class="gallery-card__image--placeholder">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="44" height="44">
+      <circle cx="16" cy="19" r="3.4" fill="#C4B5A5"/>
+      <circle cx="24" cy="15" r="3.4" fill="#C4B5A5"/>
+      <circle cx="32" cy="19" r="3.4" fill="#C4B5A5"/>
+      <path d="M24 24c-4 0-7.4 3-8.4 6.6-.7 2.4 1.1 4.8 3.6 4.8 1.5 0 2.7-.7 4.8-.7s3.3.7 4.8.7c2.5 0 4.3-2.4 3.6-4.8C31.4 27 28 24 24 24z" fill="#C4B5A5"/>
+    </svg>
+  </div>
 {{ end }}

@@ -1,28 +1,41 @@
 {{ define "main" }}
 {{ $galleryAssets := .Params.gallery_assets }}
 {{ if $galleryAssets }}
-  {{/* This is a photo gallery page */}}
-  <div class="gallery-page">
-    <div class="gallery-page__header">
-      <a href="{{ "/" | relURL }}" class="back-link">← All Galleries</a>
-      <h1 class="page-title">{{ .Title }}</h1>
+  {{/* ── A single photo gallery page ───────────────────── */}}
+
+  {{ $pattern := printf "galleries/%s/*.jpeg" $galleryAssets }}
+  {{/* Sort by EXIF capture date, falling back to filename when EXIF is missing */}}
+  {{ $sortable := slice }}
+  {{ range resources.Match $pattern }}
+    {{ $date := "" }}
+    {{ with .Meta.Exif }}{{ with .Date }}{{ $date = . }}{{ end }}{{ end }}
+    {{ $sortable = $sortable | append (dict "img" . "date" $date "name" .Name) }}
+  {{ end }}
+  {{ $images := apply (sort (sort $sortable "name") "date") "index" "." "img" }}
+  {{ $count := len $images }}
+
+  <div class="list-header">
+    <div class="list-header-overlay">
+      <div class="container">
+        <nav class="recipe-breadcrumb">
+          <a href="{{ "/" | relURL }}">Galleries</a>
+          <span>/</span>
+          <span class="current">{{ .Title }}</span>
+        </nav>
+        <div class="section-label">Gallery</div>
+        <h1 class="list-title">{{ .Title }}</h1>
+        <p class="list-count">{{ $count }} photo{{ if ne $count 1 }}s{{ end }}</p>
+      </div>
     </div>
+  </div>
 
-    {{ $pattern := printf "galleries/%s/*.jpeg" $galleryAssets }}
-    {{/* Sort by EXIF capture date, falling back to filename when EXIF is missing */}}
-    {{ $sortable := slice }}
-    {{ range resources.Match $pattern }}
-      {{ $date := "" }}
-      {{ with .Exif }}{{ with .Date }}{{ $date = . }}{{ end }}{{ end }}
-      {{ $sortable = $sortable | append (dict "img" . "date" $date "name" .Name) }}
-    {{ end }}
-    {{ $images := apply (sort (sort $sortable "name") "date") "index" "." "img" }}
-    {{ $count := len $images }}
-
+  <div class="container list-body">
     {{ if eq $count 0 }}
-      <p class="no-photos">No photos found.</p>
+      <div class="empty-state-hero">
+        <div class="empty-icon">&#128062;</div>
+        <p>No photos here yet.</p>
+      </div>
     {{ else }}
-      <p class="photo-count">{{ $count }} photos</p>
       <div class="pswp-gallery" id="gallery-{{ $galleryAssets }}">
         {{ range $images }}
           {{ $thumb := .Resize "400x webp q83" }}
@@ -52,19 +65,27 @@
   </div>
 
 {{ else }}
-  {{/* Generic list page (e.g. /galleries/) */}}
-  <div class="home">
-    <h1 class="page-title">{{ .Title }}</h1>
+  {{/* ── Generic section list (e.g. /galleries/) ───────── */}}
+  <div class="list-header">
+    <div class="list-header-overlay">
+      <div class="container">
+        <div class="section-label">Browse</div>
+        <h1 class="list-title">{{ .Title }}</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container list-body">
     <div class="gallery-grid">
       {{ range .Sections }}
-        {{ $galleryAssets := .Params.gallery_assets }}
-        {{ $images := resources.Match (printf "galleries/%s/*.jpeg" $galleryAssets) }}
-        {{ $count := len $images }}
+        {{ $count := len (resources.Match (printf "galleries/%s/*.jpeg" .Params.gallery_assets)) }}
         <a class="gallery-card" href="{{ .Permalink }}">
-          {{ partial "gallery-cover" . }}
+          <div class="gallery-card__image">
+            {{ partial "gallery-cover" . }}
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">{{ .Title }}</h2>
-            <p class="gallery-card__count">{{ $count }} photos</p>
+            <h3 class="gallery-card__title">{{ .Title }}</h3>
+            <span class="gallery-card__count">{{ $count }} photo{{ if ne $count 1 }}s{{ end }}</span>
           </div>
         </a>
       {{ end }}

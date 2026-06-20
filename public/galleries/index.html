@@ -2,69 +2,101 @@
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Galleries — My Dogs</title>
-  <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galleries &mdash; My Dogs</title>
+<meta name="description" content="Pictures of the dogs I&#39;ve had over the years">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css">
+
 </head>
 <body>
   <header class="site-header">
-    <a href="/" class="site-title">My Dogs</a>
-  </header>
+  <div class="container">
+    <a href="/" class="site-logo">
+      <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="13" r="3" fill="currentColor"/>
+        <circle cx="18" cy="10" r="3" fill="currentColor"/>
+        <circle cx="25" cy="13" r="3" fill="currentColor"/>
+        <circle cx="29" cy="20" r="2.6" fill="currentColor"/>
+        <path d="M18 17c-3.5 0-6.5 2.6-7.4 5.8-.6 2.1 1 4.2 3.2 4.2 1.3 0 2.4-.6 4.2-.6s2.9.6 4.2.6c2.2 0 3.8-2.1 3.2-4.2C24.5 19.6 21.5 17 18 17z" fill="currentColor"/>
+      </svg>
+      <span class="logo-text">My Dogs</span>
+    </a>
+    <nav class="site-nav">
+      <a href="/" >Galleries</a>
+      <a href="https://cookbook.this-old.dad/">Cookbook</a>
+      <a href="https://cudneys.net/">cudneys.net</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="this.closest('.site-header').classList.toggle('nav-open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
   <main class="site-main">
     
 
 
   
-  <div class="home">
-    <h1 class="page-title">Galleries</h1>
+  <div class="list-header">
+    <div class="list-header-overlay">
+      <div class="container">
+        <div class="section-label">Browse</div>
+        <h1 class="list-title">Galleries</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container list-body">
     <div class="gallery-grid">
       
         
-        
-        
         <a class="gallery-card" href="https://dogs.this-old.dad/galleries/indi/">
-          
+          <div class="gallery-card__image">
+            
 
 
 
   
   
   
-  <div class="gallery-card__image" style="background-image: url('/galleries/indi/IMG_0823_hu_333f673590fc5a9a.webp')"></div>
+  <img src="/galleries/indi/IMG_0823_hu_333f673590fc5a9a.webp" alt="Indi" loading="lazy">
 
 
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">Indi</h2>
-            <p class="gallery-card__count">16 photos</p>
+            <h3 class="gallery-card__title">Indi</h3>
+            <span class="gallery-card__count">16 photos</span>
           </div>
         </a>
       
-        
-        
         
         <a class="gallery-card" href="https://dogs.this-old.dad/galleries/izzy/">
-          
+          <div class="gallery-card__image">
+            
 
 
 
   
   
   
-  <div class="gallery-card__image" style="background-image: url('/galleries/izzy/2012-12-02_14-41-26_527_hu_24c3c40e369cfa02.webp')"></div>
+  <img src="/galleries/izzy/2012-12-02_14-41-26_527_hu_24c3c40e369cfa02.webp" alt="Izzy" loading="lazy">
 
 
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">Izzy</h2>
-            <p class="gallery-card__count">15 photos</p>
+            <h3 class="gallery-card__title">Izzy</h3>
+            <span class="gallery-card__count">15 photos</span>
           </div>
         </a>
       
-        
-        
         
         <a class="gallery-card" href="https://dogs.this-old.dad/galleries/rey/">
-          
+          <div class="gallery-card__image">
+            
 
 
 
@@ -74,20 +106,20 @@
     
   
   
-  <div class="gallery-card__image" style="background-image: url('/galleries/rey/8885E814-B5F7-4290-A3AD-DBC566CEBA57_hu_e823d586c1870d5c.webp')"></div>
+  <img src="/galleries/rey/8885E814-B5F7-4290-A3AD-DBC566CEBA57_hu_e823d586c1870d5c.webp" alt="Ms. Rey Skybarker" loading="lazy">
 
 
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">Ms. Rey Skybarker</h2>
-            <p class="gallery-card__count">67 photos</p>
+            <h3 class="gallery-card__title">Ms. Rey Skybarker</h3>
+            <span class="gallery-card__count">67 photos</span>
           </div>
         </a>
       
-        
-        
         
         <a class="gallery-card" href="https://dogs.this-old.dad/galleries/winston/">
-          
+          <div class="gallery-card__image">
+            
 
 
 
@@ -97,32 +129,33 @@
     
   
   
-  <div class="gallery-card__image" style="background-image: url('/galleries/winston/IMG_6173_hu_b7eee0ee371d18bb.webp')"></div>
+  <img src="/galleries/winston/IMG_6173_hu_b7eee0ee371d18bb.webp" alt="Sir Winston Furchill" loading="lazy">
 
 
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">Sir Winston Furchill</h2>
-            <p class="gallery-card__count">138 photos</p>
+            <h3 class="gallery-card__title">Sir Winston Furchill</h3>
+            <span class="gallery-card__count">138 photos</span>
           </div>
         </a>
       
         
-        
-        
         <a class="gallery-card" href="https://dogs.this-old.dad/galleries/snoopy-and-puggy/">
-          
+          <div class="gallery-card__image">
+            
 
 
 
   
   
   
-  <div class="gallery-card__image" style="background-image: url('/galleries/snoopy-and-puggy/20973c4288024b71293fa6072a788403%20%28Modified%20in%20G%281%29_hu_20cab6777688e7ee.webp')"></div>
+  <img src="/galleries/snoopy-and-puggy/20973c4288024b71293fa6072a788403%20%28Modified%20in%20G%281%29_hu_20cab6777688e7ee.webp" alt="Snoopy And Puggy" loading="lazy">
 
 
+          </div>
           <div class="gallery-card__info">
-            <h2 class="gallery-card__title">Snoopy And Puggy</h2>
-            <p class="gallery-card__count">7 photos</p>
+            <h3 class="gallery-card__title">Snoopy And Puggy</h3>
+            <span class="gallery-card__count">7 photos</span>
           </div>
         </a>
       
@@ -132,7 +165,42 @@
 
   </main>
   <footer class="site-footer">
-    <p>&copy; 2025-2026 this-old.dad</p>
-  </footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="site-logo site-logo--footer">
+          <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="13" r="3" fill="currentColor"/>
+            <circle cx="18" cy="10" r="3" fill="currentColor"/>
+            <circle cx="25" cy="13" r="3" fill="currentColor"/>
+            <circle cx="29" cy="20" r="2.6" fill="currentColor"/>
+            <path d="M18 17c-3.5 0-6.5 2.6-7.4 5.8-.6 2.1 1 4.2 3.2 4.2 1.3 0 2.4-.6 4.2-.6s2.9.6 4.2.6c2.2 0 3.8-2.1 3.2-4.2C24.5 19.6 21.5 17 18 17z" fill="currentColor"/>
+          </svg>
+          <span class="logo-text">My Dogs</span>
+        </a>
+        <p class="footer-tagline">Every good boy &amp; girl,<br>over the years.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Family</h4>
+        <ul>
+          <li><a href="https://cookbook.this-old.dad/">Cookbook</a></li>
+          <li><a href="https://dogs.this-old.dad/">Dogs</a></li>
+          <li><a href="https://cudneys.net/">cudneys.net</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <p class="footer-about">
+          A photo album of the dogs we've shared our lives with.
+          Thanks for stopping by to meet them.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 this-old.dad</p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

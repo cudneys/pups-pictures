@@ -1,0 +1,37 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="{{ "/" | relURL }}" class="site-logo site-logo--footer">
+          <svg class="logo-mark" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="13" r="3" fill="currentColor"/>
+            <circle cx="18" cy="10" r="3" fill="currentColor"/>
+            <circle cx="25" cy="13" r="3" fill="currentColor"/>
+            <circle cx="29" cy="20" r="2.6" fill="currentColor"/>
+            <path d="M18 17c-3.5 0-6.5 2.6-7.4 5.8-.6 2.1 1 4.2 3.2 4.2 1.3 0 2.4-.6 4.2-.6s2.9.6 4.2.6c2.2 0 3.8-2.1 3.2-4.2C24.5 19.6 21.5 17 18 17z" fill="currentColor"/>
+          </svg>
+          <span class="logo-text">{{ .Site.Title }}</span>
+        </a>
+        <p class="footer-tagline">Every good boy &amp; girl,<br>over the years.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Family</h4>
+        <ul>
+          <li><a href="https://cookbook.this-old.dad/">Cookbook</a></li>
+          <li><a href="https://dogs.this-old.dad/">Dogs</a></li>
+          <li><a href="https://cudneys.net/">cudneys.net</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <p class="footer-about">
+          A photo album of the dogs we've shared our lives with.
+          Thanks for stopping by to meet them.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ now.Year }} this-old.dad</p>
+    </div>
+  </div>
+</footer>

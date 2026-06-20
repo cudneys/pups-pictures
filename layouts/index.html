@@ -1,21 +1,52 @@
-{{ define "title" }}{{ .Site.Title }}{{ end }}
 {{ define "main" }}
-<div class="home">
-  <h1 class="page-title">{{ .Site.Title }}</h1>
-  <div class="gallery-grid">
-    {{ $galleriesSection := .Site.GetPage "/galleries" }}
-    {{ range $galleriesSection.Sections }}
-      {{ $galleryAssets := .Params.gallery_assets }}
-      {{ $images := resources.Match (printf "galleries/%s/*.jpeg" $galleryAssets) }}
-      {{ $count := len $images }}
-      <a class="gallery-card" href="{{ .Permalink }}">
-        {{ partial "gallery-cover" . }}
-        <div class="gallery-card__info">
-          <h2 class="gallery-card__title">{{ .Title }}</h2>
-          <p class="gallery-card__count">{{ $count }} photos</p>
-        </div>
-      </a>
-    {{ end }}
+
+{{ $galleriesSection := .Site.GetPage "/galleries" }}
+{{ $galleries := $galleriesSection.Sections }}
+{{ $totalPhotos := 0 }}
+{{ range $galleries }}
+  {{ $imgs := resources.Match (printf "galleries/%s/*.jpeg" .Params.gallery_assets) }}
+  {{ $totalPhotos = add $totalPhotos (len $imgs) }}
+{{ end }}
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-glow hero-glow--1"></div>
+  <div class="hero-glow hero-glow--2"></div>
+  <div class="container hero-inner">
+    <div class="hero-eyebrow">
+      <span>{{ len $galleries }} galler{{ if eq (len $galleries) 1 }}y{{ else }}ies{{ end }} &middot; {{ $totalPhotos }} photos</span>
+    </div>
+    <h1 class="hero-title">
+      The dogs<br>
+      <em>we love.</em>
+    </h1>
+    <p class="hero-sub">{{ .Site.Params.description }}</p>
+    <div class="hero-actions">
+      <a href="#galleries" class="btn btn--primary">Browse Galleries</a>
+    </div>
   </div>
-</div>
+</section>
+
+<!-- ── Gallery Grid ─────────────────────────────────────── -->
+<section class="section section--tinted" id="galleries">
+  <div class="container">
+    <div class="section-label">The Pack</div>
+    <h2 class="section-title">Meet the dogs</h2>
+    <div class="gallery-grid">
+      {{ range $galleries }}
+        {{ $count := len (resources.Match (printf "galleries/%s/*.jpeg" .Params.gallery_assets)) }}
+        <a class="gallery-card" href="{{ .Permalink }}">
+          <div class="gallery-card__image">
+            {{ partial "gallery-cover" . }}
+          </div>
+          <div class="gallery-card__info">
+            <h3 class="gallery-card__title">{{ .Title }}</h3>
+            <span class="gallery-card__count">{{ $count }} photo{{ if ne $count 1 }}s{{ end }}</span>
+          </div>
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
 {{ end }}
