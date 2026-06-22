@@ -125,6 +125,15 @@ a:hover { text-decoration: underline; }
 }
 .site-nav a.active { color: var(--accent); }
 
+/* Divider before off-site (family) links */
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-strong);
+  margin: 0 .5rem;
+  flex-shrink: 0;
+}
+
 /* Mobile hamburger */
 .nav-toggle {
   display: none;
@@ -162,6 +171,12 @@ a:hover { text-decoration: underline; }
   }
   .nav-open .site-nav { display: flex; }
   .site-nav a { padding: .6rem .75rem; }
+  .nav-divider {
+    width: auto;
+    height: 1px;
+    margin: .4rem 0;
+    background: var(--border);
+  }
 }
 
 /* ---------- Helpers --------------------------------------- */

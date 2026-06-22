@@ -12,8 +12,10 @@
     </a>
     <nav class="site-nav">
       <a href="{{ "/" | relURL }}" {{ if .IsHome }}class="active"{{ end }}>Galleries</a>
-      <a href="https://cookbook.this-old.dad/">Cookbook</a>
-      <a href="https://cudneys.net/">Home</a>
+      <span class="nav-divider" aria-hidden="true"></span>
+      <a href="https://cudneys.net/" class="nav-external">Home</a>
+      <a href="https://cookbook.this-old.dad/" class="nav-external">Cookbook</a>
+      <a href="https://scotts.house/" class="nav-external">House</a>
     </nav>
     <button class="nav-toggle" aria-label="Toggle menu" onclick="this.closest('.site-header').classList.toggle('nav-open')">
       <span></span><span></span><span></span>
